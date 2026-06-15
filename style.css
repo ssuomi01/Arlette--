@@ -51,7 +51,23 @@ p {
     height: 180px; /* Espacio alto y seguro para el juego del botón rojo */
     position: relative;
 }
+#btn-confirmar-wa {
+    background-color: #25d366; /* Verde oficial de WhatsApp */
+    color: white;
+    font-size: 1.1rem;
+    padding: 14px 28px;
+    border-radius: 50px; /* Redondito elegante */
+    margin-top: 20px;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    display: inline-flex;
+    flex-direction: row; /* Este va horizontal normal */
+    transition: transform 0.2s, background-color 0.2s;
+}
 
+#btn-confirmar-wa:hover {
+    background-color: #1ebd56;
+    transform: scale(1.05);
+}
 button {
     display: inline-flex;
     flex-direction: column; /* Pone la foto arriba y el texto abajo */

@@ -27,32 +27,41 @@ btnNo.addEventListener('touchstart', (e) => {
     moverBoton();
 });
 
-// --- 2. TRANSICIÓN AL DAR CLICK EN "SÍ" (CORREGIDA PARA SAFARI) ---
+// --- 2. TRANSICIÓN ROMÁNTICA AL DAR CLICK EN "SÍ" ---
 function aceptarPropuesta() {
-    // REEMPLAZA LAS X CON TU NÚMERO (Ej: 526621234567)
-    const tuTelefono = "526311908032"; 
-    const mensaje = encodeURIComponent("¡Siií! ¡Acepto ir al billar contigo! 🎱❤️");
-    
-    // CRITICAL PARA SAFARI: Se ejecuta de inmediato para que no lo detecte como pop-up
-    window.open(`https://api.whatsapp.com/send?phone=${tuTelefono}&text=${mensaje}`, '_blank');
-
-    // Al mismo tiempo, corre la animación romántica en la página
+    // Desvanecemos la pantalla inicial
     pantalla.classList.add('oculto');
+    
+    // Activamos la lluvia de corazones de fondo
     crearLluviaCorazones();
 
+    // Cambiamos el contenido de la tarjeta por el diseño romántico con el nuevo botón
     setTimeout(() => {
         document.body.style.backgroundColor = '#7a0832'; 
 
         pantalla.innerHTML = `
             <h2>¡Siií! ❤️ Me haces feliz</h2>
             <p>Ya es un hecho, nos vemos este domingo en nuestra cita en el billar. 🎱✨</p>
+            
+            <button id="btn-confirmar-wa" onclick="enviarWhatsApp()">
+                Confirmar por WhatsApp 💬
+            </button>
         `;
 
         pantalla.classList.remove('oculto');
     }, 600);
 }
 
-// --- 3. SISTEMA DE LLUVIA DE CORAZONES ---
+// --- 3. FUNCIÓN DEL NUEVO BOTÓN PARA ABRIR WHATSAPP ---
+function enviarWhatsApp() {
+    // REEMPLAZA LAS X CON TU NÚMERO (Ej: 526621234567)
+    const tuTelefono = "526311908032"; 
+    const mensaje = encodeURIComponent("¡Siií! ¡Acepto ir al billar contigo! 🎱❤️");
+    
+    window.open(`https://api.whatsapp.com/send?phone=${tuTelefono}&text=${mensaje}`, '_blank');
+}
+
+// --- 4. SISTEMA DE LLUVIA DE CORAZONES ---
 function crearLluviaCorazones() {
     const intervalo = setInterval(() => {
         const corazon = document.createElement('div');
