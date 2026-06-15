@@ -44,7 +44,7 @@ function aceptarPropuesta() {
             <p>Ya es un hecho, nos vemos este domingo en nuestra cita en el billar. 🎱✨</p>
             
             <button id="btn-confirmar-wa" onclick="enviarWhatsApp()">
-                Confirmar por WhatsApp 💬
+                Confirmar <3
             </button>
         `;
 
