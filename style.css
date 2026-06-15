@@ -1,0 +1,121 @@
+body {
+    background-color: #124e3f; /* Verde mesa de billar */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Evita barras de scroll con la lluvia de corazones */
+    transition: background-color 1s ease;
+}
+
+.tarjeta {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    z-index: 10; /* Mantiene la tarjeta al frente de los corazones flotantes */
+}
+
+/* Clase para el efecto de desvanecido en la transición */
+.oculto {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+h2 {
+    color: #1b1b1b;
+    font-size: 1.6rem;
+    margin-bottom: 40px;
+    line-height: 1.4;
+}
+
+p {
+    color: #555;
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+.contenedor-botones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px; /* Separación inicial perfecta entre botones */
+    height: 180px; /* Espacio alto y seguro para el juego del botón rojo */
+    position: relative;
+}
+
+button {
+    display: inline-flex;
+    flex-direction: column; /* Pone la foto arriba y el texto abajo */
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Espacio entre el perrito y las letras */
+    
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+/* Configuración de la foto del perrito dentro del botón */
+.icono-boton {
+    width: 80px;  
+    height: 80px; 
+    object-fit: contain; 
+}
+
+#btn-si {
+    background-color: #27ae60; /* Verde para aceptar */
+    color: white;
+    z-index: 5;
+}
+
+#btn-si:hover {
+    background-color: #219653;
+    transform: scale(1.05);
+}
+
+#btn-no {
+    background-color: #c0392b; /* Rojo para no aceptar */
+    color: white;
+    position: relative; /* Inicia normal y alineado */
+    left: auto;
+    top: auto;
+    transform: none;
+    height: fit-content;
+    white-space: nowrap; /* Evita que el texto se rompa en dos renglones */
+    z-index: 15; /* Siempre por encima si se cruza con el verde */
+}
+
+/* --- ESTILOS PARA LA LLUVIA DE CORAZONES --- */
+.corazon-flotante {
+    position: absolute;
+    bottom: -50px; /* Nacen abajo de la pantalla */
+    background-image: url('cor4.png'); /* Usa tu imagen de corazones */
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none; /* No interfieren con los clicks */
+    animation: flotarHaciaArriba 4s linear forwards;
+}
+
+@keyframes flotarHaciaArriba {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-120vh) rotate(30deg); /* Suben y rotan un poco */
+        opacity: 0; /* Se desvanecen arriba */
+    }
+}
