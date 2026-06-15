@@ -40,7 +40,7 @@ function aceptarPropuesta() {
         document.body.style.backgroundColor = '#7a0832'; 
 
         pantalla.innerHTML = `
-            <h2>¡Siií! ❤️ Me haces feliz</h2>
+            <h2>¡Siii! ❤️ Me haces feliz Arlette</h2>
             <p>Ya es un hecho, nos vemos este domingo en nuestra cita en el billar. 🎱✨</p>
             
             <button id="btn-confirmar-wa" onclick="enviarWhatsApp()">
@@ -56,7 +56,7 @@ function aceptarPropuesta() {
 function enviarWhatsApp() {
     // REEMPLAZA LAS X CON TU NÚMERO (Ej: 526621234567)
     const tuTelefono = "526311908032"; 
-    const mensaje = encodeURIComponent("¡Siií! ¡Acepto ir al billar contigo! 🎱❤️");
+    const mensaje = encodeURIComponent("¡Siii! ¡Acepto ir al billar contigo! 🎱❤️");
     
     window.open(`https://api.whatsapp.com/send?phone=${tuTelefono}&text=${mensaje}`, '_blank');
 }
