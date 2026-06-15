@@ -1,19 +1,20 @@
 const btnNo = document.getElementById('btn-no');
 const pantalla = document.getElementById('pantalla-billar');
 
+// --- 1. LÓGICA DE MOVIMIENTO SEGURO DEL BOTÓN "NO" ---
 function moverBoton() {
     if (btnNo.style.position !== 'absolute') {
         btnNo.style.position = 'absolute';
     }
 
     const limitesTarjeta = pantalla.getBoundingClientRect();
-    const paddingTarjeta = 40;
+    const paddingTarjeta = 40; 
 
     const anchoMaximo = limitesTarjeta.width - btnNo.offsetWidth - (paddingTarjeta * 2);
     const altoMaximo = limitesTarjeta.height - btnNo.offsetHeight - (paddingTarjeta * 2);
 
     const x = Math.random() * anchoMaximo - (anchoMaximo / 2);
-    const y = Math.random() * altoMaximo - (altoMaximo / 2) + 50;
+    const y = Math.random() * altoMaximo - (altoMaximo / 2) + 50; 
 
     btnNo.style.left = '50%';
     btnNo.style.top = '50%';
@@ -22,32 +23,33 @@ function moverBoton() {
 
 btnNo.addEventListener('mouseenter', moverBoton);
 btnNo.addEventListener('touchstart', (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
     moverBoton();
 });
 
+// --- 2. TRANSICIÓN AL DAR CLICK EN "SÍ" (CORREGIDA PARA SAFARI) ---
 function aceptarPropuesta() {
+    // REEMPLAZA LAS X CON TU NÚMERO (Ej: 526621234567)
+    const tuTelefono = "526311908032"; 
+    const mensaje = encodeURIComponent("¡Siií! ¡Acepto ir al billar contigo! 🎱❤️");
+    
+    // CRITICAL PARA SAFARI: Se ejecuta de inmediato para que no lo detecte como pop-up
+    window.open(`https://api.whatsapp.com/send?phone=${tuTelefono}&text=${mensaje}`, '_blank');
+
+    // Al mismo tiempo, corre la animación romántica en la página
     pantalla.classList.add('oculto');
     crearLluviaCorazones();
 
-    // 2. Cambiar el diseño visual primero (La sorpresa romántica)
     setTimeout(() => {
-        document.body.style.backgroundColor = '#7a0832';
+        document.body.style.backgroundColor = '#7a0832'; 
 
         pantalla.innerHTML = `
-            <h2>¡Siii! ❤️ Me haces feliz</h2>
-            <p>Ya es un hecho Arlette, nos vemos este domingo en nuestra cita en el billar. 🎱✨</p>
+            <h2>¡Siií! ❤️ Me haces feliz</h2>
+            <p>Ya es un hecho, nos vemos este domingo en nuestra cita en el billar. 🎱✨</p>
         `;
 
         pantalla.classList.remove('oculto');
     }, 600);
-
-    setTimeout(() => {
-        const tuTelefono = "526311908032";
-        const mensaje = encodeURIComponent("¡Siii! ¡Acepto ir al billar contigo! 🎱❤️");
-
-        window.open(`https://api.whatsapp.com/send?phone=${tuTelefono}&text=${mensaje}`, '_blank');
-    }, 5000); 
 }
 
 // --- 3. SISTEMA DE LLUVIA DE CORAZONES ---
@@ -70,7 +72,7 @@ function crearLluviaCorazones() {
             corazon.remove();
         }, 5000);
 
-    }, 150);
+    }, 150); 
 
     setTimeout(() => {
         clearInterval(intervalo);
